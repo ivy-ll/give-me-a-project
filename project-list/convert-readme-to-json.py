@@ -1,5 +1,4 @@
 import re
-import json
 
 f = open("open-source-readme.txt")
 
@@ -44,11 +43,7 @@ for line in f:
             big.append(temp)
 
 
-readme_json = json.dumps(big)
+with open('projects.txt', 'w') as f2:
+    f2.write(str(big))
 
-with open('readme.json', 'w') as json_file:
-    json.dump(readme_json, json_file)
-
-print(readme_json)
-
-f.close()
+f2.close()
