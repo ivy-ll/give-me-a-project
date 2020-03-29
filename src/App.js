@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import projectList from './projects/projects';
 
 function Button(props) {
   return (
@@ -13,18 +14,22 @@ function Button(props) {
 }
 
 function Project(props){
-  let val = 'val';
-  let name = 'hello world';
-  let lang = 'Language: ' + 'java';
-  let link = 'https://google.ca';
-  let description = 'blah blah';
+  // get random project
+  let projectNum = Math.round(Math.random() * projectList.length);
+  let project = projectList[projectNum];
+
+  let name = project[1];
+  let lang = 'language: ' + (project[0]);
+  let linkText = '<go to repo>'
+  let link = project[2];
+  let description = project[3];
 
   return (
-    <div class='project-panel'>
-      <a class='project-name'>{name}</a>
-      <a class='project-language'>{lang}</a>
-      <a href={link}>Repository</a>
-      <a class='project-desc'>{description}</a>
+    <div className='project-panel'>
+      <a className='project-name'>{name}<br /></a>
+      <a className='project-language'>{lang}<br /></a>
+      <a className='project-desc'>{description}<br /></a>
+      <a className='project-repo' href={link}>{linkText}</a>
     </div>
   );
 }
